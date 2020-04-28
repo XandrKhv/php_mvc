@@ -3,7 +3,7 @@
 --
 
 CREATE TABLE `task` (
-  `id` int(11) PRIMARY KEY NOT NULL,
+  `id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `text` text NOT NULL,
