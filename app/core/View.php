@@ -41,10 +41,12 @@ class View
         $url = '/index.php';
         $url .= isset($getParams['c']) ? '?c=' . $getParams['c'] : '?c=main';
         $url .= isset($getParams['a']) ? '&a=' . $getParams['a'] : '&a=index';
-        $url .= isset($getParams['sort']) ? '&sort=' . $getParams['sort'] : '';
-        $url .= isset($getParams['page']) ? '&page=' . $getParams['page'] : '';
-        $url .= isset($getParams['view']) ? '&view=' . $getParams['view'] : '';
-        $url .= isset($getParams['to']) ? '&to=' . $getParams['to'] : '';
+        foreach ($getParams as $nameParam => $valueParam) {
+            if ($nameParam == 'c' || $nameParam == 'a') {
+                continue;
+            }
+            $url .= '&' . $nameParam . '=' . $valueParam;
+        }
 
         return $url;
     }
