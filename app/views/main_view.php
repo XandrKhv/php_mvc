@@ -46,10 +46,10 @@
     <div class="col-md-12">
         <table class="table table-bordered m-t-4">
             <tr>
-                <td><a href="<?= View::urlHref('sort', 'name') ?>">Имя</a></td>
-                <td><a href="<?= View::urlHref('sort', 'email') ?>">E-Mail</a></td>
+                <td><a href="<?= View::urlHref(['sort' => 'name', 'to' => Route::sortTo()]) ?>">Имя</a></td>
+                <td><a href="<?= View::urlHref(['sort' => 'email', 'to' => Route::sortTo()]) ?>">E-Mail</a></td>
                 <td>Задача</td>
-                <td><a href="<?= View::urlHref('sort', 'status') ?>">Статус</a></td>
+                <td><a href="<?= View::urlHref(['sort' => 'status', 'to' => Route::sortTo()]) ?>">Статус</a></td>
             </tr>
             <?php foreach ($data['content'] as $task) : ?>
                 <tr>

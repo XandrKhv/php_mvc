@@ -12,6 +12,7 @@ class Route
         $sort = isset($getParams['sort']) ? Utils::lowerFilter($getParams['sort']) : '';
         $page = isset($getParams['page']) ? Utils::lowerFilter($getParams['page']) : '';
         $view = isset($getParams['view']) ? Utils::lowerFilter($getParams['view']) : '';
+        $to = isset($getParams['to']) ? Utils::lowerFilter($getParams['to']) : '';
 
         // наличие модели
         $requireModel = false;
@@ -35,6 +36,9 @@ class Route
             $controller->model = new $modelName;
             if (!empty($sort)) {
                 $controller->model->sort = $sort;
+            }
+            if (!empty($to)) {
+                $controller->model->to = $to;
             }
             if (!empty($page)) {
                 $controller->model->page = $page;
@@ -78,5 +82,15 @@ class Route
             $resultArray[$name] = htmlspecialchars($value);
         }
         return $resultArray;
+    }
+
+    /**
+     * @return string
+     */
+    public static function sortTo()
+    {
+        $getParams = self::getParams();
+
+        return isset($getParams['to']) ? ($getParams['to'] == 'up' ? 'down' : 'up') : 'down';
     }
 }

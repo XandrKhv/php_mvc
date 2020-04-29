@@ -44,6 +44,7 @@ class View
         $url .= isset($getParams['sort']) ? '&sort=' . $getParams['sort'] : '';
         $url .= isset($getParams['page']) ? '&page=' . $getParams['page'] : '';
         $url .= isset($getParams['view']) ? '&view=' . $getParams['view'] : '';
+        $url .= isset($getParams['to']) ? '&to=' . $getParams['to'] : '';
 
         return $url;
     }

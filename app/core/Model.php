@@ -5,6 +5,7 @@ class Model
     public $sort;
     public $page;
     public $view;
+    public $to;
     // записей на страницу по умолчанию
     public $perPage = 3;
 
@@ -19,10 +20,11 @@ class Model
         if (!empty($this->view)) {
             $sql = 'SELECT * FROM `task` WHERE `id` = ' . (int)$this->view;
         } else {
+            $order = $this->to == 'down' ? 'ASC' : 'DESC';
             if (!empty($this->sort)) {
-                $sql .= '`' . preg_replace('/[^a-zA-Z0-9]/', '', $this->sort) . '` ASC';
+                $sql .= '`' . preg_replace('/[^a-zA-Z0-9]/', '', $this->sort) . '` ' . $order;
             } else {
-                $sql .= '`id` DESC';
+                $sql .= '`id` ' . $order;
             }
             if (!empty($this->page)) {
                 $limit = $this->perPage * ((int)$this->page - 1);
